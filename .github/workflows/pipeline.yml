@@ -21,15 +21,15 @@ jobs:
         run: npm run build
       - name: test
         run: npm test
-      - name: e2e tests
-        uses: cypress-io/github-action@v2
-        with:
-          command: npm run test:e2e
-          satrt: npm run start-prod
-          wait-on: http://localhost:5000
+#      - name: e2e tests
+#        uses: cypress-io/github-action@v2
+#        with:
+#          command: npm run test:e2e
+#          satrt: npm run start-prod
+#          wait-on: http://localhost:5000
       - name: Deploy to Heroku
         uses: AkhileshNS/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: murmuring-basin-55191
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
